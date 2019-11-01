@@ -1,0 +1,72 @@
+% \section{Amplificateurs}
+% \section{Transistors bipolaires}
+
+\section{Amplificateurs à transistors bipolaires}
+\begin{enumerate}
+    \item Analyse DC ($C=$ circuit ouvert)
+    \item Analyse AC ($C=$ court circuit)
+        \begin{enumerate}
+            \item Calcul de $r^{\prime}_e$
+            \item Dessin du modèle en $\pi$
+            \item Calcul du gain en tension
+            \item Calcul de l'impédance $Z_{in}$ et $Z_{out}$
+            \item Dessin de l'étage à 2 ports
+            \item Calcul du gain en tension avec charge
+        \end{enumerate}
+\end{enumerate}
+\subsection{Analyse DC ($C=$ circuit ouvert)}
+\subsubsection{Polarisation Fixe}
+\begin{center}
+    \includestandalone[scale=1]{fig/pol_base}
+\end{center}
+\begin{tabular}{ll}
+    Tension base émetteur & \(V_{BE}=0.7\) \\
+    Courant dans la base & \(I_B=(V_{CC}-V_{BE})/R_{B}\)\\
+    Courant dans le collecteur & \(I_C=\beta I_B\)\\
+    Tension collecteur émetteur & \(V_{CE}=V_{CC}-I_C R_C\)
+\end{tabular}
+
+\subsubsection{Polarisation réaction d'émetteur}
+\begin{center}
+    \includestandalone[scale=1]{fig/pol_react_emetteur}
+\end{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{ll}
+    Tension base émetteur & \(V_{BE}=0.7\) \\
+    Courant dans la base & \(I_B=\frac{(V_{CC}-V_{BE})}{R_{B}+(\beta+1)R_E}\)\\
+    Courant dans le collecteur & \(I_C=\beta I_B\)\\
+    Tension collecteur émetteur & \(V_{CE}=V_{CC}-I_C(R_C+R_E)\)
+\end{tabular}
+
+\subsubsection{Polarisation diviseur résistif}
+\begin{center}
+    \includestandalone[scale=1]{fig/pol_div_res}
+\end{center}
+\begin{tabular}{ll}
+    Tension base émetteur & \(V_{BE}=0.7\)\\
+    Tension Thévenin & \(V_{Th}=V_{CC}*R_{2}/(R_1+R_2)\) \\
+    Résistance Thévenin & \(R_{Th}=\frac{R_1 R_2}{R_1+R_2} < \beta R_E/10\)\\
+    Courant dans la base & \(I_B=\frac{V_{Th}-V_{BE}}{R_{Th}+(\beta+1) R_E }\)\\
+    Courant dans le collecteur & \(I_C=\beta I_B \cong I_E\)\\
+    Tension collecteur émetteur & \(V_{CE}=V_{CC}-I_C(R_C+R_E)\)
+\end{tabular}
+
+\subsection{Analyse AC ($C=$ court circuit)}
+\begin{tabular}{ll}
+    Résistance interne & \(r^{\prime}_e = 25\si{\milli\ampere}/I_E\) \\
+    Impédance à l'entrée & \(Z_{in}=\beta*r^{\prime}_e = R_i\)\\
+    Impédance à la sortie & \(Z_{out}=R_C = R_o\)\\
+    Tension d'entrée & \(V_{in}=R_i*V_{out-1}/(R_i+R_{o-1})\)\\
+    Tension de sortie & \(V_{out}=V_{in} \beta R_i/(R_i+R_{o-1})\)\\
+    Gain en tension (no load) & \(A_{VNL}=\frac{V_{out}}{V_{in}}=\frac{R_C}{r^{\prime}_e}\)\\
+    Gain en tension (w. load) & \(A_V = A_{VNL} R_L/(R_L+R_o)\)
+\end{tabular}
+\subsubsection{Modèle en $\pi$}
+\begin{center}
+\includestandalone[scale=1.25]{fig/modele_en_pi}
+\end{center}
+
+\subsubsection{Étage à 2 ports}
+\begin{center}
+\includestandalone[scale=1.25]{fig/sys_2_ports}
+\end{center}

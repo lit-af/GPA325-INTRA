@@ -1,0 +1,73 @@
+\documentclass[margin=0.25mm]{standalone}
+\usepackage[american,cuteinductors]{circuitikz}
+
+\usetikzlibrary{calc}
+\ctikzset{bipoles/thickness=1}
+\ctikzset{bipoles/length=0.8cm}
+\ctikzset{bipoles/diode/height=.375}
+\ctikzset{bipoles/diode/width=.3}
+\ctikzset{tripoles/thyristor/height=.8}
+\ctikzset{tripoles/thyristor/width=1}
+\ctikzset{bipoles/vsourceam/height/.initial=.7}
+\ctikzset{bipoles/vsourceam/width/.initial=.7}
+\tikzstyle{every node}=[font=\small]
+\tikzstyle{every path}=[line width=0.7pt,line cap=round,line join=round]
+
+\begin{document}
+\begin{circuitikz}[scale=2, every node/.style={scale=.75}]
+    \def\xLeft{0}
+    \def\yBottom{0}
+    \def\yTop{1}
+    \def\yMid{\yTop/2}
+    \def\xTL{\xLeft+.5}
+    \def\xTR{\xTL+.25}
+    \def\xDL{\xTR+1}
+    \def\xDR{\xDL+.5}
+    \def\xC{\xDR+.5}
+    \def\xR{\xC+2}
+    \def\xRL{\xC+0.5}
+    \def\xRight{\xRL+0.5}
+    % left loop
+    \draw   (\xLeft, \yBottom) 
+            to[sV, l=$V_1$] (\xLeft, \yTop)
+            to[short] (\xTL, \yTop)
+            to[L, l_=$N_1$] (\xTL, \yBottom)
+            to[short] (\xLeft, \yBottom);
+        
+    % second loop
+    \draw   (\xTR,\yBottom) to[L, l_=$N_2$] (\xTR, \yTop)
+            to[short] (\xDL, \yTop);
+    
+    \draw   (\xDL-.5,\yMid-.25) node[ground]{} 
+            to[short] (\xDL-.5,\yMid)
+            to[short] (\xDL,\yMid)
+            to[D*, l=$D_1$] (\xDL,\yTop);
+            
+    \draw (\xDL,\yMid)        
+            to[D*, l_=$D_2$] (\xDL, \yBottom)
+            to[short] (\xTR,\yBottom);
+            
+    \draw   (\xDR,\yMid)
+            to[D*, l_=$D_4$, invert] (\xDR, \yBottom)
+            to[short] (\xDL,\yBottom);
+        
+    \draw   (\xDR,\yMid)
+            to[D*, l=$D_3$, invert] (\xDR,\yTop)
+            to[short] (\xDL,\yTop);
+        
+    \draw   (\xDR,\yMid)
+            to[short] (\xC,\yMid)
+            to[C, l=$C$] (\xC,\yBottom+.125)
+            node[ground]{};
+            
+    \draw   (\xC,\yMid) 
+            to[short] (\xRL,\yMid)
+            to[R,l=$R_L$] (\xRL,\yBottom+.125)
+            to[short] (\xC,\yBottom+.125);
+            
+    \draw (\xRL, \yMid) to[short, -o] (\xRight,\yMid);
+    \draw (\xRL, \yBottom+.125) to[short, -o] (\xRight,\yBottom+.125);
+        
+
+\end{circuitikz}
+\end{document}

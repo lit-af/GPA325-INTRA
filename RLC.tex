@@ -1,0 +1,74 @@
+\section{Circuits RLC}
+\subsection{Type de régime}
+\begin{tabular}{ll}
+\(\omega_0^2 < \alpha^2 \rightarrow \zeta > 0\) & Sur-amorti\\
+\(\omega_0^2 > \alpha^2 \rightarrow \zeta < 0 \) & Sous-amorti\\
+\(\omega_0^2 = \alpha^2 \rightarrow \zeta = 0\) & Amortissement critique\\
+\end{tabular}
+
+\subsection{En série}
+\begin{tabular}{llcl}
+Racine  & \(s_{1,2}\) & \(=\) & \( -\alpha \pm \sqrt{\alpha^2-\omega_0^2} \) \\
+Coeff. amortissement (rad/s) & \( \alpha\) & \(=\) & \(R/2L \) \\
+Fréq. naturelle (rad/s) & \(\omega_0\) & \(=\) & \(1/\sqrt{LC} \) \\
+Taux d'ammortissement & \( \zeta\) & \(=\) & \(\alpha/\omega_0\)
+\end{tabular}
+
+\subsubsection{Sur-amorti $\omega^2 < \alpha^2$}
+\begin{align*}
+i(t) &= I_f + A_1 e^{s_1 t}+A_2 e^{s_2t} \\
+v(0) &= A_1+A_2  \\
+i_C(0)/C &= s_1 A_1 + s_2 A_2
+\end{align*}
+
+\subsubsection{Sous-amorti $\omega^2 > \alpha^2$}
+\begin{align*}
+    i(t) &= I_f + B_1 e^{-\alpha t}\cos\qty(\omega_d t)+B_2 e^{-\alpha t}\sin\qty(\omega_d t)\\
+    \omega_d &= \sqrt{\omega_0^2-\alpha^2}\\
+    i(0) &= B_1 + I_f\\
+    v_L(0)/L &= -\alpha B_1 + \omega_d B_2
+\end{align*}
+
+\subsubsection{Amortissement critique $\omega^2 = \alpha^2$}
+\begin{align*}
+i(t) &= I_f + D_1 t e^{-\alpha t}+D_2 e^{-\alpha t}\\
+i(0) &= I_0 = D_2\\
+v_L(0)/L &= D_1 -\alpha D_2
+\end{align*}
+
+\subsection{En parallèle}
+\begin{tabular}{llcl}
+Racine  & \(s_{1,2}\) & \(=\) & \(-\alpha \pm \sqrt{\alpha^2-\omega_0^2} \) \\
+Coeff. amortissement (rad/s)& \( \alpha\) & \(=\) & \(1/2RC \) \\
+Fréq. naturelle (rad/s) & \(\omega_0\) & \(=\) & \(1/\sqrt{LC}\) \\
+Taux d'ammortissement & \( \zeta\) & \(=\) & \(\alpha/\omega_0\)
+\end{tabular}
+
+\subsection{Équations des courants}
+\begin{align*}
+    i_R(t) &= v(t)/R \\
+    i_C(t) &= C\frac{dv(t)}{dt}\\
+    i_L(t) &= -i_R(t) - i_C(t)
+\end{align*}
+
+\subsubsection{Sur-amorti $\omega^2 < \alpha^2$}
+\begin{align*}
+v(t) &= V_f + A_1 e^{s_1 t}+A_2 e^{s_2t} \\    
+v(0) &= A_1+A_2  \\
+i_C(0)/C &= s_1 A_1 + s_2 A_2
+\end{align*}
+
+\subsubsection{Sous-amorti $\omega^2 > \alpha^2$}
+\begin{align*}
+    v(t) &= V_f + B_1 e^{-\alpha t}\cos\qty(\omega_d t)+B_2 e^{-\alpha t}\sin\qty(\omega_d t)\\
+    \omega_d &= \sqrt{\omega_0^2 - \alpha^2}\\
+    v(0) &= V_0 = B_1 \\
+    i_C(0)/C &= -\alpha B_1+\omega_d B_2
+\end{align*}
+
+\subsubsection{Amortissement critique $\omega^2 = \alpha^2$}
+\begin{align*}
+    v(t) &= V_f + D_1 t e^{-\alpha t} + D_2 e^{-\alpha t}\\
+    v(0) &= V_0 = D_2\\
+    i_C(0)/C &= D_1 - \alpha D_2
+\end{align*}

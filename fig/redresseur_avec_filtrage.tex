@@ -1,0 +1,60 @@
+\documentclass[margin=0.25mm]{standalone}
+\usepackage[american,cuteinductors]{circuitikz}
+
+\usetikzlibrary{calc}
+\ctikzset{bipoles/thickness=1}
+\ctikzset{bipoles/length=0.8cm}
+\ctikzset{bipoles/diode/height=.375}
+\ctikzset{bipoles/diode/width=.3}
+\ctikzset{tripoles/thyristor/height=.8}
+\ctikzset{tripoles/thyristor/width=1}
+\ctikzset{bipoles/vsourceam/height/.initial=.7}
+\ctikzset{bipoles/vsourceam/width/.initial=.7}
+\tikzstyle{every node}=[font=\small]
+\tikzstyle{every path}=[line width=0.7pt,line cap=round,line join=round]
+
+\begin{document}
+\begin{circuitikz}[scale=1, every node/.style={scale=.75}]
+    \def\xLeft{0}
+    \def\yBottom{0}
+    \def\yTop{1}
+    \def\xTL{\xLeft+1}
+    \def\xTR{\xTL+.25}
+    \def\xD{\xTR+2}
+    \def\xC{\xD}
+    \def\xR{\xC+2}
+    % \def\xZ{\xR}
+    \def\xRL{\xC+0.5}
+    \def\xRight{\xRL+0.5}
+    % left loop
+    
+    \draw   (\xLeft, \yBottom) 
+            to[sV, l=$V_1$] (\xLeft, \yTop)
+            to[short] (\xTL, \yTop)
+            to[L, l_=$N_1$] (\xTL, \yBottom)
+            to[short] (\xLeft, \yBottom);
+        
+    \draw   (\xTR,\yBottom)
+            to[L, l_=$N_2$] (\xTR, \yTop)
+            to[D*, l_=$D_1$] (\xD,\yTop)
+            to[short] (\xC, \yTop)
+            to[C, l_=$C$] (\xC,\yBottom)
+            to[short] (\xTR,\yBottom);
+        
+    % \draw   (\xC, \yTop)
+    %         to[R, l_=$R$] (\xR,\yTop)
+    %         to[short] (\xZ,\yTop)
+    %         to[zzD*,l_=$D2$,mirror,invert] (\xZ, \yBottom)
+    %         to[short] (\xC,\yBottom);
+            
+    \draw   (\xC,\yTop) 
+            to[short] (\xRL,\yTop)
+            to[R,l=$R_L$] (\xRL,\yBottom)
+            to[short] (\xC,\yBottom);
+            
+    \draw (\xRL, \yTop) to[short, -o] (\xRight,\yTop);
+    \draw (\xRL, \yBottom) to[short, -o] (\xRight,\yBottom);
+        
+
+\end{circuitikz}
+\end{document}

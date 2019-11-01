@@ -1,0 +1,50 @@
+% \documentclass{standalone}
+\documentclass[margin=0.25mm]{standalone}
+\usepackage[american]{circuitikz}
+
+\usetikzlibrary{calc}
+\ctikzset{bipoles/thickness=1}
+\ctikzset{bipoles/length=0.8cm}
+\ctikzset{bipoles/diode/height=.375}
+\ctikzset{bipoles/diode/width=.3}
+\ctikzset{tripoles/thyristor/height=.8}
+\ctikzset{tripoles/thyristor/width=1}
+\ctikzset{bipoles/vsourceam/height/.initial=.7}
+\ctikzset{bipoles/vsourceam/width/.initial=.7}
+\tikzstyle{every node}=[font=\small]
+\tikzstyle{every path}=[line width=0.7pt,line cap=round,line join=round]
+
+
+\begin{document}
+\begin{circuitikz}[scale=1.25, every node/.style={scale=.75}]
+    \def\xPortLeft{0}
+    \def\yTerminalBottom{0}
+    \def\yL{1.5}
+    \def\xL{.5}
+    \def\xR{1.25}
+    % \def\xC{2.25}
+    \def\xPortRight{2.5}
+    \def\xRL{3.25}
+    % left loop
+    \draw                               (\xPortLeft,\yL)
+            to[short]   (\xL, \yL)
+            % to[R=$R$]                   (\xR, \yL)
+            % to[short]                   (\xC,\yL)
+            to[R, l_=$R_i$,-*]           (\xL,\yTerminalBottom)
+            to[short]          (\xPortLeft,\yTerminalBottom)
+            to[open,v^<=$V_i$,o-o]   (\xPortLeft,\yL);
+    % right branch
+    \draw                               (\xL,\yTerminalBottom)
+            to[short] (\xR, \yTerminalBottom)
+            to[sV, v_<=$A_{v_{NL}}V_i$, *-] (\xR, \yL)
+            to[short] (\xPortRight, \yL)
+            to[R, l_=$R_o$] (\xPortRight+1, \yL)
+            to[open,v^=$V_o$,o-o]    (\xPortRight+1,\yTerminalBottom)
+            to[short]                   (\xR,\yTerminalBottom);
+            
+    \draw (\xPortRight+1, \yL)
+            to[short, o-] (\xRL+1, \yL)
+            to[R, l=$R_L$] (\xRL+1, \yTerminalBottom)
+            to[short, -o] (\xPortRight+1, \yTerminalBottom);
+\end{circuitikz}
+\end{document}

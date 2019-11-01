@@ -1,0 +1,82 @@
+\section{Redresseurs}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{ll}
+    Tension pointe à l'entrée & \( V_{2p}= \sqrt{2}*V_{RMS} * N_2/N_1\)\\
+    Si la diode est idéale & \(V_{\mathrm{seuil}}=0\)
+\end{tabular}
+
+\subsection{sans filtrage}
+\subsubsection{Simple alternance}
+\begin{tabular}{ll}
+    Paramètre & Diode réelle \\\hline
+    Tension pointe de la charge & \(V_{Lp}=V_{2p}-V_{\mathrm{seuil}}\)\\
+    Tension moyenne de la charge & \(V_{L\mathrm{moy}}=V_{2p}-V_{\mathrm{seuil}}/\pi \)\\
+    Courant moyen dans la charge & \(I_{L\mathrm{moy}}=V_{2p}-V_{\mathrm{seuil}}/\pi R_{L} \)\\
+    Courant moyen dans la diode &  \(I_{D\mathrm{moy}}=V_{2p}-V_{\mathrm{seuil}}/\pi R_{L} \)\\
+    Tension inverse de crête & \(TIC=V_{2p}\)
+\end{tabular}
+
+\subsubsection{Double alternance}
+\renewcommand{\arraystretch}{2}
+\begin{tabular}{ll}
+    Paramètre & Diode réelle \\\hline
+    Tension pointe de la charge & \(V_{Lp}=\frac{V_{2p}}{2}-V_{\mathrm{seuil}}\)\\
+    Tension Moyenne de la charge & \(V_{L\mathrm{moy}}=\frac{V_{2p}-2V_{\mathrm{seuil}}}{\pi}\)\\
+    Courant moyen dans la charge & \(I_{L\mathrm{moy}}=\frac{V_{2p}-2V_{\mathrm{seuil}}}{\pi R_L}\)\\
+    Courant moyen dans les diodes &  \(I_{D\mathrm{moy}}=\frac{V_{2p}-2V_{\mathrm{seuil}}}{2\pi R_L}\)\\
+    Tension inverse de crête & \(TIC_{D1} = TIC_{D2}=V_{2p}\)
+\end{tabular}
+
+\subsubsection{en pont}
+\begin{tabular}{ll}
+    Paramètre & Diode réelle \\\hline
+    Tension pointe de la charge & \(V_{Lp}=V_{2p}-2V_{\mathrm{seuil}}\)\\
+    Tension moyenne de la charge & \(V_{L\mathrm{moy}}=\frac{2(V_{2p}-2V_{\mathrm{seuil}})}{\pi}\)\\
+    Courant moyen dans la charge & \(I_{L\mathrm{moy}}=\frac{2(V_{2p}-2V_{\mathrm{seuil}})}{\pi R_L}\)\\
+    Courant moyen dans les diodes &  \(I_{D\mathrm{moy}}=\frac{V_{2p}-2V_{\mathrm{seuil}}}{\pi R_L}\)\\
+    Tension inverse de crête & \(TIC_{Di}=V_{2p}\)
+\end{tabular}
+
+\subsection{avec filtrage}
+\renewcommand{\arraystretch}{1}
+\subsubsection{Simple alternance $f=f_{\mathrm{in}}$}
+\begin{center}
+    \includestandalone[scale=1.25]{fig/redresseur_avec_filtrage}
+\end{center}
+\begin{tabular}{ll}
+    Paramètre & Diode réelle \\\hline
+    Tension pointe de la charge & \(V_{Lp}=V_{2p}-V_{\mathrm{seuil}}\)\\
+    Tension moyenne de la charge & \(V_{L\mathrm{moy}}=V_{Lp}-(V_{R}/2)\)\\
+    Ondulation de la tension & \(V_{R}=V_{Lp}/(R_L f C)\)\\
+    Courant moyen dans la charge & \(I_{L\mathrm{moy}}=V_{L\mathrm{moy}}/R_{L} \)\\
+    Courant moyen dans la diode &  \(I_{D\mathrm{moy}}=I_{L\mathrm{moy}}\)\\
+    Courant maximum dans la diode & \(I_p=I_{D\mathrm{moy}}*2(V_{L\mathrm{moy}} / V_R)\)\\
+    Tension inverse de crête & \(TIC=2V_{2p}\)
+\end{tabular}
+
+\subsubsection{Double alternance $f=2f_{\mathrm{in}}$}
+\begin{tabular}{ll}
+    Paramètre & Diode réelle \\\hline
+    Tension pointe de la charge & \(V_{Lp}=\frac{V_{2p}}{2}-V_{\mathrm{seuil}}\)\\
+    Tension moyenne de la charge & \(V_{L\mathrm{moy}}=V_{Lp}-(V_R /2)\)\\
+    Ondulation de la tension & \(V_{R}=V_{Lp}/(R_L f C)\)\\
+    Courant moyen dans la charge & \(I_{L\mathrm{moy}}=V_{L\mathrm{moy}}/R_{L} \)\\
+    Courant moyen dans les diodes &  \(I_{D\mathrm{moy}}=I_{L\mathrm{moy}}/2\)\\
+    Courant maximum dans la diode & \(I_p=I_{D\mathrm{moy}}*2(V_{L\mathrm{moy}} / V_R)\)\\
+    Tension inverse de crête & \(TIC_{D1} = TIC_{D2}=V_{2p}\)
+\end{tabular}
+
+\subsubsection{en pont $f=2f_{\mathrm{in}}$}
+\begin{center}
+    \includestandalone[scale=1]{fig/pont_diode}
+\end{center}
+\begin{tabular}{ll}
+    Paramètre & Diode réelle \\\hline
+    Tension pointe de la charge & \(V_{Lp}=V_{2p}-2V_{\mathrm{seuil}}\)\\
+    Tension moyenne de la charge & \(V_{L\mathrm{moy}}=V_{Lp}-(V_R /2)\)\\
+    Ondulation de la tension & \(V_{R}=V_{Lp}/(R_L f C)\)\\
+    Courant moyen dans la charge & \(I_{L\mathrm{moy}}= V_{L\mathrm{moy}} / R_L\)\\
+    Courant moyen dans les diodes &  \(I_{D\mathrm{moy}}=I_{L\mathrm{moy}}/2\)\\
+    Courant maximum dans la diode & \(I_p=I_{D\mathrm{moy}}*2(V_{L\mathrm{moy}} / V_R)\)\\
+    Tension inverse de crête & \(TIC_{Di}=V_{2p}\)
+\end{tabular}

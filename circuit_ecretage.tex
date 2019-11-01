@@ -1,0 +1,34 @@
+\section{Circuits d'écrêtage}
+\vspace{-1\baselineskip}
+\begin{center}
+\begin{circuitikz}[scale=1, every node/.style={scale=1}]
+  \draw (0,0)
+  to[sV, l=$V_i$] (0,2) % The voltage source
+  to[R,l_=$R_s$] (2,2) % The resistor
+  to[D*, l=$D_1$] (2,1) 
+  to[battery,l=$V_1$] (2,0)
+  to[short] (0,0);
+  \draw (2,0)
+  to[short] (4,0)
+  to[battery, l_=$V_2$] (4,1)
+  to[D*, l_=$D_2$] (4,2)
+  to[short] (2,2);
+  \draw (4,2)
+  to[short] (6,2)
+  to[R, l_=$R_L$] (6,0)
+  to[short] (4,0);
+\end{circuitikz}
+\end{center}
+
+\begin{enumerate}[nosep]
+    \item Écrire l'équation de boucle
+    \item Résoudre pour $V_o$ en mode blocage et conduction
+    \item Déterminer pour quelle valeur de $V_i$ la diode passera d'un mode à l'autre
+    \item Tracer $V_o$ et $V_i$ sur le même graphique
+\end{enumerate}
+\begin{center}
+\begin{tabular}{c|c}
+    Blocage & Conduction \\
+    \(V_d \leq V_{\mathrm{seuil}}\) & \(V_d \geq V_{\mathrm{seuil}}\)
+\end{tabular}
+\end{center}

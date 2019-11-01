@@ -1,0 +1,26 @@
+\documentclass[margin=0.25mm]{standalone}
+\usepackage[american]{circuitikz}
+
+\usetikzlibrary{calc}
+\ctikzset{bipoles/thickness=1}
+\ctikzset{bipoles/length=0.8cm}
+\ctikzset{bipoles/diode/height=.375}
+\ctikzset{bipoles/diode/width=.3}
+\ctikzset{tripoles/thyristor/height=.8}
+\ctikzset{tripoles/thyristor/width=1}
+\ctikzset{bipoles/vsourceam/height/.initial=.7}
+\ctikzset{bipoles/vsourceam/width/.initial=.7}
+\tikzstyle{every node}=[font=\small]
+\tikzstyle{every path}=[line width=0.7pt,line cap=round,line join=round]
+
+\begin{document}
+\begin{circuitikz}[scale=1, every node/.style={scale=.75}]
+
+    \draw (0,0) node[npn](T) {};
+    \draw (T.B) to[short] ++(-.5,0) to[R, l_=$R_1$] ++(-1,0) to[short] ++(-0.25,0) to[V, l_=$V_B$] ++(0,-1) node[ground]{};
+    \draw (T.B) to[R, l_=$R_2$] ++(0,-1) to[short] ++(0,0) node[ground]{};
+    \draw (T.E) to[R, l=$R_E$] (0,-1) node[ground]{};
+    \draw (T.E) to[short] ++(1,0) to[C, l=$C$] (1,-1) node[ground]{};
+    \draw (T.C) to[short] ++(.25,0) to[R,l=$R_C$] ++(1,0) to[short] ++(.5,0) to[V, l=$V_{CC}$] ++(0,-.75) to[short] (1.75,-1) node[ground]{};
+\end{circuitikz}
+\end{document}
